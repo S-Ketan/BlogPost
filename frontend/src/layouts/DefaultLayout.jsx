@@ -1,8 +1,15 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { useStateContext } from "../contexts/ContextProvider";
 
 const DefaultLayout = () => {
   const onLogout = () => {};
+const { token } = useStateContext();
+console.log("Token in DefaultLayout:", token); // Debugging line
+  if(!token){
+    return <Navigate to="/login" />
+  }
 
   return (
     <div className="min-h-screen flex">
