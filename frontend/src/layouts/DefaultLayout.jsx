@@ -14,7 +14,7 @@ console.log("Token in DefaultLayout:", token); // Debugging line
   return (
     <div className="min-h-screen flex">
       {/* Sidebar */}
-      <aside className="bg-gradient-to-b from-purple-700 to-purple-500 w-64 flex flex-col justify-between py-8 px-6 shadow-lg">
+  <aside className="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-purple-700 to-purple-500 flex flex-col justify-between py-8 px-6 shadow-lg z-30">
         <div>
           <h2 className="text-3xl font-bold text-white mb-10 tracking-wide">Bloggin Shoggin</h2>
           <nav className="flex flex-col gap-4">
@@ -43,9 +43,9 @@ console.log("Token in DefaultLayout:", token); // Debugging line
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col bg-gray-50 min-h-screen">
+      <div className="flex-1 flex flex-col bg-gray-50 min-h-screen ml-64">
         {/* Header */}
-        <header className="bg-white h-20 flex items-center justify-end px-10 shadow">
+        <header className="fixed top-0 left-64 right-0 h-20 flex items-center justify-end px-10 shadow bg-white z-40">
           <div className="flex items-center gap-4">
             <span className="text-lg font-semibold text-gray-700">Ketan</span>
             <img
@@ -56,8 +56,8 @@ console.log("Token in DefaultLayout:", token); // Debugging line
           </div>
         </header>
         {/* Main */}
-        <main className="flex-1 p-10">
-          <div className="max-w-5xl mx-auto">
+        <main className="flex-1 p-10 pt-20 overflow-auto">
+          <div className="max-w-5xl mx-auto min-h-screen">
             <Outlet />
           </div>
         </main>
