@@ -1,12 +1,21 @@
 import React, { useState } from "react";
+import axiosClient from "../axios-client";
+import { useStateContext } from "../contexts/ContextProvider";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const { setUser, setToken } = useStateContext();
   const onSubmit = (e) => {
     e.preventDefault;
+    axiosClient.post('login',formData).then((data)=>{
+      console.log(data);
+      setUser(data.user);
+      setToken(data.token);
+    }).catch(()=>{});
+    
   };
   const onChange = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
